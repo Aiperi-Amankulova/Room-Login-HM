@@ -8,7 +8,7 @@ import com.example.room.Data.DataClass
 import com.example.room.R
 import kotlinx.android.synthetic.main.item_recyc.view.*
 
-class Room(private val  listener: ItemListener):RecyclerView.Adapter<Room.VHolder>() {
+class Room(private val  listener: Listener):RecyclerView.Adapter<Room.VHolder>() {
 
     private var data = arrayListOf<DataClass>()
 
@@ -32,7 +32,7 @@ class Room(private val  listener: ItemListener):RecyclerView.Adapter<Room.VHolde
     }
 
     class VHolder(view: View): RecyclerView.ViewHolder(view){
-        fun bind(data: DataClass, listener: ItemListener){
+        fun bind(data: DataClass, listener: Listener){
             itemView.tvFirst.text=data.etFirst
             itemView.tvSecond.text=data.etSecond
         }

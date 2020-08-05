@@ -11,44 +11,38 @@ import com.example.room.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private var db: DataClass2?=null // благодаря db: DataBaseAbstrct? осушеств передача таблиц
-
-    private var  adapterGrd :GridAdapter? = null  // делаетс глобал, для возможн перезаписать
+    private var database: DataClass2? = null
+    private var  adapterGrd :RoomActivity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        db = App.app?.getDB()
+        database = Add.add?.getDB()
 
         recyclers()
     }
 
-
     private fun recyclers() {
-        val Gridmanager =  GridLayoutManager(applicationContext, 2)   // (Gridmanager -переменная
-        recyclerView.layoutManager = Gridmanager            // где recycler это id
-        adapterGrd = GridAdapter(this)      //adapterGrd это переменная // (this)  для функции удаления кнопки delete
+        val Gridmanager =  GridLayoutManager(applicationContext, 2)
+        recyclerView.layoutManager = Gridmanager
+        adapterGrd = RoomActivity(this)
         recyclerView.adapter = adapterGrd
-        val data = db?.getDaoInterf()?.getallEditFromDataclass()
+        val data = database?.getDaoInterf()?.getallEditFromDataclass()
 
-        if (data!=null)                               // проверка что data не = null, т.к adapterGrd.update(data) выходит ошибка
+        if (data!=null)
             adapterGrd?.update(data)
     }
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
-
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.add -> {
 
-                this.startActivity(Intent(this, ShowActivity :: class.java))
+                this.startActivity(Intent(this,  RoomActivity :: class.java))
                 return true
             }
             else -> super.onOptionsItemSelected(item)
@@ -57,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun itemClicked(data: DataClass) {
-        val newdata = db?.getDaoInterf()?.getallEditFromDataclass()
+        val newdata = database?.getDaoInterf()?.getallEditFromDataclass()
         if (newdata!=null)
             adapterGrd?.update(newdata)
     }
