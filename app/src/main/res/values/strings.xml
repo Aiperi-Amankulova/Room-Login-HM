@@ -3,4 +3,6 @@
     <string name="first">Заголовок</string>
     <string name="second">Описание</string>
     <string name="save">Сохранить</string>
+    <string name="add">Add</string>
+    <string name="Add">добавить</string>
 </resources>

@@ -16,11 +16,11 @@ class RoomActivity(mainActivity: MainActivity) : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_room)
-        listener()
-        database = Add.add?.getDB()
+        IntentListener()
+        database = Add.add?.getDataBase()
     }
 
-    private fun listener(){
+    private fun IntentListener(){
         btnSave.setOnClickListener {
             database?.getDaoInterf()?.insertDataClassEdit(forlistener())
             val intent = Intent()

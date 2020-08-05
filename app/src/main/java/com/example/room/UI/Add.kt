@@ -1,6 +1,7 @@
 package com.example.room.UI
 
 import android.app.Application
+import androidx.room.Room.databaseBuilder
 import com.example.room.Data.DataClass2
 
 class Add : Application() {
@@ -15,7 +16,7 @@ class Add : Application() {
             .build()
     }
 
-    fun getDB() = database
+    fun getDataBase() = database
 
     companion object {
         var add: Add? = null

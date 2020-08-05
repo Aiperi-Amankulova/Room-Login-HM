@@ -3,34 +3,36 @@ package com.example.room.UI
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.room.Data.DataClass
 import com.example.room.Data.DataClass2
 import com.example.room.R
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.room.UI.Room as Room
 
 class MainActivity : AppCompatActivity() {
     private var database: DataClass2? = null
-    private var  adapterGrd :RoomActivity? = null
+    private var  adapter :RoomActivity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        database = Add.add?.getDB()
+        database = Add.add?.getDataBase()
 
-        recyclers()
+        recyclerviewAdaoter()
     }
 
-    private fun recyclers() {
-        val Gridmanager =  GridLayoutManager(applicationContext, 2)
-        recyclerView.layoutManager = Gridmanager
-        adapterGrd = RoomActivity(this)
-        recyclerView.adapter = adapterGrd
+    private fun recyclerviewAdaoter() {
+        val GridManagerLayout =  GridLayoutManager(applicationContext, 2)
+        recyclerView.layoutManager = GridManagerLayout
+        adapter = Room(this)
+        recyclerView.adapter = adapter
         val data = database?.getDaoInterf()?.getallEditFromDataclass()
 
         if (data!=null)
-            adapterGrd?.update(data)
+            adapter?.upDate(data)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -53,6 +55,6 @@ class MainActivity : AppCompatActivity() {
     override fun itemClicked(data: DataClass) {
         val newdata = database?.getDaoInterf()?.getallEditFromDataclass()
         if (newdata!=null)
-            adapterGrd?.update(newdata)
+            adapter?.upDate(newdata)
     }
 }

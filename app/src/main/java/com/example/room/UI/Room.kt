@@ -25,7 +25,7 @@ class Room(private val  listener: Listener):RecyclerView.Adapter<Room.VHolder>()
         holder.bind(data[position], listener)
     }
 
-    fun update (data : List<DataClass>){
+    fun upDate (data : List<DataClass>){
         this.data.clear()
         this.data.addAll(data)
         notifyDataSetChanged()
