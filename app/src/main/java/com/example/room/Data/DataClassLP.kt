@@ -6,8 +6,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class DataClassLP (
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    var edlog: String,
-    var edpass: String
-
+    val id: Int= 0,
+    var etFirst : String,
+    var etSecond : String
 )
