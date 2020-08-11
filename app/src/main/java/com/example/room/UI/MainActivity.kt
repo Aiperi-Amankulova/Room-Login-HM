@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridManagerLayout
         adapter = Room(this)
         recyclerView.adapter = adapter
-        val data = database?.getDaoInterf()?.getallEditFromDataclass()
+        val data = database?.getDaoInterface()?.getallEditFromDataclass()
 
         if (data!=null)
             adapter?.upDate(data)
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun itemClicked(data: DataClass) {
-        val newdata = database?.getDaoInterf()?.getallEditFromDataclass()
+        val newdata = database?.getDaoInterface()?.getallEditFromDataclass()
         if (newdata!=null)
             adapter?.upDate(newdata)
     }

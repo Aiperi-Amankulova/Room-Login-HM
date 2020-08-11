@@ -22,7 +22,7 @@ class RoomActivity(mainActivity: MainActivity) : AppCompatActivity() {
 
     private fun IntentListener(){
         btnSave.setOnClickListener {
-            database?.getDaoInterf()?.insertDataClassEdit(forlistener())
+            database?.getDaoInterface()?.insertDataClassEdit(forlistener())
             val intent = Intent()
             setResult(Activity.RESULT_OK, intent)
             finish()
